@@ -5,7 +5,7 @@ using UnityEngine;
 public class ZoomControl : MonoBehaviour
 {
 
-    public float ZoomSize = 20;
+    public float ZoomSize = 60;
     private Camera _camera;
 
     void Start()
@@ -15,11 +15,11 @@ public class ZoomControl : MonoBehaviour
 
     void Update()
     {
-        ZoomSize -= Input.GetAxis("Mouse ScrollWheel") * 8;
+        ZoomSize -= Input.GetAxis("Mouse ScrollWheel") * 10;
         if (ZoomSize <= 5)
             ZoomSize = 5;
-        else if (ZoomSize >= 50)
-            ZoomSize = 50;
+        else if (ZoomSize >= 100)
+            ZoomSize = 100;
         _camera.orthographicSize = ZoomSize;
     }
 }

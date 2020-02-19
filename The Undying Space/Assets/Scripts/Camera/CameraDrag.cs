@@ -29,8 +29,8 @@ public class CameraDrag : MonoBehaviour
         {
             _camera.transform.position = Origin - Diference;
             _camera.transform.position = new Vector3(
-    Mathf.Clamp(transform.position.x, -150f, 150f),
-    Mathf.Clamp(transform.position.y, -150, 150f),
+    Mathf.Clamp(transform.position.x, -500f, 500f),
+    Mathf.Clamp(transform.position.y, -500f, 500f),
     transform.position.z);
         }
 

@@ -15,7 +15,7 @@ public class Patrol : MonoBehaviour
     {
         bens = false;
     }
-    private float timeCount = 0.0f;
+    //private float timeCount = 0.0f;
 
     void Update()
     {
