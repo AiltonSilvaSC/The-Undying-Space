@@ -36,15 +36,20 @@ public class UIManager : MonoBehaviour
         DesativarSelectionPanel();
     }
 
-    public void AtualizarSpaceShipPanel(EnumTipo tipo)
-    {
-        _spaceShipPanel.SetActive(true);
-        _spaceShipTipo.text = tipo.GetDescription();
-    }
-
     public void DesativarSelectionPanel()
     {
         _spaceShipPanel.SetActive(false);
     }
 
+    public void AtualizarSpaceShipPanel(EnumTipo tipo)
+    {
+        DesativarSelectionPanel();
+        _spaceShipPanel.SetActive(true);
+        _spaceShipTipo.text = tipo.GetDescription();
+    }
+
+    public void AtualizarPlanetPanel()
+    {
+        DesativarSelectionPanel();
+    }
 }

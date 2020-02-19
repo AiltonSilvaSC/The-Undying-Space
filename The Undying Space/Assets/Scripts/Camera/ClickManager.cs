@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ClickManager : MonoBehaviour
 {
     private Camera _camera;
+    private Objeto _objetoAnterior;
     private void Start()
     {
         _camera = GetComponent<Camera>();
@@ -20,8 +21,14 @@ public class ClickManager : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
             if (hit.collider != null)
             {
+                if (_objetoAnterior != null)
+                {
+                    _objetoAnterior.DesativarSelection();
+                    _objetoAnterior = null;
+                }
                 if (hit.collider.TryGetComponent<Objeto>(out var objeto))
                 {
+
                     Debug.Log(objeto.TipoObjeto);
                     switch (objeto.TipoObjeto)
                     {
@@ -30,6 +37,8 @@ public class ClickManager : MonoBehaviour
                             {
                                 Debug.Log(spaceShip.Nome);
                                 UIManager.instance.AtualizarSpaceShipPanel(spaceShip.TipoNave);
+                                _objetoAnterior = objeto;
+                                objeto.MostrarSelection();
                             }
                             else
                                 Debug.LogError("Script SpaceShip não encontrado neste objeto!");
@@ -38,7 +47,7 @@ public class ClickManager : MonoBehaviour
                             if (hit.collider.TryGetComponent<Planet>(out var planet))
                             {
                                 Debug.Log(planet.Nome);
-                                //UIManager.instance.AtualizarSpaceShipPanel(planet.Nome);
+                                UIManager.instance.AtualizarPlanetPanel();
                             }
                             else
                                 Debug.LogError("Script Planet não encontrado neste objeto!");
@@ -51,6 +60,11 @@ public class ClickManager : MonoBehaviour
             else
             {
                 UIManager.instance.DesativarSelectionPanel();
+                if (_objetoAnterior != null)
+                {
+                    _objetoAnterior.DesativarSelection();
+                    _objetoAnterior = null;
+                }
             }
         }
     }
