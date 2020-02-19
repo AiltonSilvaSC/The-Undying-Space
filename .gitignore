@@ -10,6 +10,14 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
+The Undying Space/[Ll]ibrary/
+The Undying Space/[Tt]emp/
+The Undying Space/[Oo]bj/
+The Undying Space/[Bb]uild/
+The Undying Space/[Bb]uilds/
+The Undying Space/[Ll]ogs/
+The Undying Space/[Mm]emoryCaptures/
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 

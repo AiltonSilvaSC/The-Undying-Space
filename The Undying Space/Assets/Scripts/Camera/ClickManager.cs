@@ -5,11 +5,9 @@ using UnityEngine.UI;
 public class ClickManager : MonoBehaviour
 {
     private Camera _camera;
-    public GameObject PanelGUI;
     private void Start()
     {
         _camera = GetComponent<Camera>();
-        PanelGUI.transform.Find("ObjetoNome").GetComponent<Text>().text = "";
     }
 
     void Update()
@@ -31,7 +29,7 @@ public class ClickManager : MonoBehaviour
                             if (hit.collider.TryGetComponent<SpaceShip>(out var spaceShip))
                             {
                                 Debug.Log(spaceShip.Nome);
-                                PanelGUI.transform.Find("ObjetoNome").GetComponent<Text>().text = spaceShip.Nome;
+                                UIManager.instance.AtualizarSpaceShipPanel(spaceShip.TipoNave);
                             }
                             else
                                 Debug.LogError("Script SpaceShip não encontrado neste objeto!");
@@ -40,7 +38,7 @@ public class ClickManager : MonoBehaviour
                             if (hit.collider.TryGetComponent<Planet>(out var planet))
                             {
                                 Debug.Log(planet.Nome);
-                                PanelGUI.transform.Find("ObjetoNome").GetComponent<Text>().text = planet.Nome;
+                                //UIManager.instance.AtualizarSpaceShipPanel(planet.Nome);
                             }
                             else
                                 Debug.LogError("Script Planet não encontrado neste objeto!");
@@ -52,7 +50,7 @@ public class ClickManager : MonoBehaviour
             }
             else
             {
-                PanelGUI.transform.Find("ObjetoNome").GetComponent<Text>().text = "";
+                UIManager.instance.DesativarSelectionPanel();
             }
         }
     }
