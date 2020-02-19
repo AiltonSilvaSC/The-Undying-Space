@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Enuns
 {
-    public enum EnumTipo
+    public enum EnumTipos
     {
         [Description("Cargueiro Pequeno")]
         CargueiroPequeno,

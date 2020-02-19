@@ -31,7 +31,7 @@ public class ClickManager : MonoBehaviour
                     Debug.Log(objeto.TipoObjeto);
                     switch (objeto.TipoObjeto)
                     {
-                        case EnumObjeto.SpaceShip:
+                        case EnumObjetos.SpaceShip:
                             if (hit.collider.TryGetComponent<SpaceShip>(out var spaceShip))
                             {
                                 Debug.Log(spaceShip.Nome);
@@ -42,7 +42,7 @@ public class ClickManager : MonoBehaviour
                             else
                                 Debug.LogError("Script SpaceShip não encontrado neste objeto!");
                             break;
-                        case EnumObjeto.Planet:
+                        case EnumObjetos.Planet:
                             if (hit.collider.TryGetComponent<Planet>(out var planet))
                             {
                                 Debug.Log(planet.Nome);

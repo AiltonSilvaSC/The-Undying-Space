@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Objeto : MonoBehaviour
 {
-    public EnumObjeto TipoObjeto;
+    public EnumObjetos TipoObjeto;
     private SpriteRenderer _spriteRender;
 
     private void Start()

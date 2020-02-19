@@ -10,9 +10,9 @@ public class UIManager : MonoBehaviour
     #region SelectionPanel
     #region SpaceShip
     [SerializeField]
-    private GameObject _spaceShipPanel;
+    private GameObject _spaceShipPanel = null;
     [SerializeField]
-    private Text _spaceShipTipo;
+    private Text _spaceShipTipo = null;
     #endregion
     #endregion
     private void Awake()
@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
         _spaceShipPanel.SetActive(false);
     }
 
-    public void AtualizarSpaceShipPanel(EnumTipo tipo)
+    public void AtualizarSpaceShipPanel(EnumTipos tipo)
     {
         DesativarSelectionPanel();
         _spaceShipPanel.SetActive(true);
