@@ -28,7 +28,6 @@ public class ClickManager : MonoBehaviour
                 }
                 if (hit.collider.TryGetComponent<Objeto>(out var objeto))
                 {
-
                     Debug.Log(objeto.TipoObjeto);
                     switch (objeto.TipoObjeto)
                     {
