@@ -18,4 +18,4 @@ Você pode criar também uma nave construtora, que você envia no asteroid para 
 uma nave de carga vá e colete o recurso.
 
 Você também precisa se defender contra inimigos, que podem atacar após um tempo de jogo. O objetivo deles é atacar tudo que estiver mais próximo então deixe algumas 
-naves como escoltas de outras.
+naves como escoltas de outras
