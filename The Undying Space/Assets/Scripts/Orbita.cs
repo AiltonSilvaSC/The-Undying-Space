@@ -12,9 +12,9 @@ public class Orbita : MonoBehaviour
     private void Start()
     {
         _lineRenderer = gameObject.AddComponent<LineRenderer>();
-        _lineRenderer.sortingOrder = 1;
+        _lineRenderer.sortingLayerName = "Fundo";
+        _lineRenderer.sortingOrder = 2;
         _lineRenderer.startColor = Color.white;
-        _lineRenderer.endColor = Color.white;
         _lineRenderer.widthMultiplier = 0.300f;
         _lineRenderer.material = Resources.Load("Materials/MaterialWhite", typeof(Material)) as Material;
         _lineRenderer.loop = true;

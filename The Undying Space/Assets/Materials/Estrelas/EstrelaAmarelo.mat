@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EstrelaAmarelo
+  m_Shader: {fileID: -6465566751694194690, guid: c44b135aac793b441842da88a460e342,
+    type: 3}
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainText:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_C6851F69_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 14f80d38942e65048936155dbe90062f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_E2937ACC_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 14f80d38942e65048936155dbe90062f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_1159D1DC: 0.05
+    - Vector1_15113EF8: 15
+    - Vector1_54274FF7: 0.21
+    - Vector1_C5533E58: 0
+    - Vector1_C8019684: 0.5
+    - Vector1_CBC3C9BF: 1
+    m_Colors:
+    - Color_675B054F: {r: 1, g: 1, b: 1, a: 0}
+    - Color_AA324A83: {r: 1, g: 0.43897685, b: 0.07058823, a: 0}
+    - Vector2_38238119: {r: 0, g: 0.02, b: 0, a: 0}
+    - Vector2_F3A4EE3E: {r: 0, g: 0, b: 0, a: 0}
+    - Vector4_8954AC07: {r: 0, g: 0.05, b: 0, a: 0}

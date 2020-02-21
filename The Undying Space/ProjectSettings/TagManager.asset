@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Fundo
+    uniqueID: 2612966587
+    locked: 0
   - name: Planetas
     uniqueID: 798643159
     locked: 0
