@@ -18,14 +18,11 @@ public class ClickManager : MonoBehaviour
             Vector3 mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
-            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+            int naves = LayerMask.GetMask("Naves");
+            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero, 20, naves);
             if (hit.collider != null)
             {
-                if (_objetoAnterior != null)
-                {
-                    _objetoAnterior.DesativarSelection();
-                    _objetoAnterior = null;
-                }
+                _objetoAnterior.DesativarSelection();
                 if (hit.collider.TryGetComponent<Objeto>(out var objeto))
                 {
                     Debug.Log(objeto.TipoObjeto);
@@ -52,6 +49,7 @@ public class ClickManager : MonoBehaviour
                                 Debug.LogError("Script Planet não encontrado neste objeto!");
                             break;
                     }
+                    return;
                 }
                 else
                     Debug.LogError("Script Objeto não encontrado neste objeto!");

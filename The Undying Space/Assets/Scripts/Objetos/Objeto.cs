@@ -20,7 +20,8 @@ public class Objeto : MonoBehaviour
     public void DesativarSelection()
     {
         _spriteRender.sortingOrder = 0;
-        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        if (gameObject.activeSelf)
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
     }
 }

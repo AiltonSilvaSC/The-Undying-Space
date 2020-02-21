@@ -476,7 +476,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: 0.8979437, w: -0.4401105}
   m_LocalPosition: {x: -46.5, y: 110.1, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
-  m_Children: []
+  m_Children:
+  - {fileID: 519420032}
   m_Father: {fileID: 491702955}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 232.22198}
@@ -702,7 +703,7 @@ Transform:
   - {fileID: 2138107204}
   - {fileID: 1095370145}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -797,12 +798,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -93.5, y: 80.4, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0, z: -0.8979437, w: -0.4401105}
+  m_LocalPosition: {x: 0, y: 0, z: -3.3333335}
+  m_LocalScale: {x: 0.33333325, y: 0.33333325, z: 0.33333334}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 425758941}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
 MonoBehaviour:
@@ -1935,7 +1936,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &967674757
 GameObject:
@@ -1987,7 +1988,7 @@ Transform:
   - {fileID: 1863687456}
   - {fileID: 53456772}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &982383693
 GameObject:
@@ -2163,10 +2164,10 @@ GameObject:
   - component: {fileID: 1060723306}
   - component: {fileID: 1060723309}
   - component: {fileID: 1060723308}
-  - component: {fileID: 1060723310}
   - component: {fileID: 1060723311}
   - component: {fileID: 1060723312}
   - component: {fileID: 1060723313}
+  - component: {fileID: 1060723310}
   m_Layer: 0
   m_Name: wship-2
   m_TagString: Untagged
@@ -2212,7 +2213,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1760553083
   m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a6651cd2aa6df29498ee2daab1d80d36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2232,12 +2233,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060723305}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.2, y: 94.5, z: 0}
+  m_LocalPosition: {x: -176, y: 325, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 690347714}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1060723308
 MonoBehaviour:
@@ -2357,6 +2358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TipoNave: 0
   Nome: Cargueiro Pequeno Arax
+  Alvo: {fileID: 425758941}
 --- !u!114 &1060723313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2947,7 +2949,7 @@ RectTransform:
   m_Children:
   - {fileID: 790826013}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3476,7 +3478,7 @@ Transform:
   m_Children:
   - {fileID: 927782841}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1535580370
 MonoBehaviour:
@@ -3505,6 +3507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TipoNave: 3
   Nome: Frigata Destruidora de noobs
+  Alvo: {fileID: 0}
 --- !u!61 &1535580372
 BoxCollider2D:
   m_ObjectHideFlags: 0
