@@ -14,7 +14,7 @@ public class CameraDrag : MonoBehaviour
     }
     void LateUpdate()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetButton("Fire3"))
         {
             Diference = _camera.ScreenToWorldPoint(Input.mousePosition) - _camera.transform.position;
             if (Drag == false)
