@@ -19,7 +19,7 @@ public class ClickManager : MonoBehaviour
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
             int naves = LayerMask.GetMask("Naves");
-            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero, 20, naves);
+            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero, 10, naves);
             if (hit.collider != null)
             {
                 _objetoAnterior.DesativarSelection();
