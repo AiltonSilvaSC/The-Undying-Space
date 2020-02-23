@@ -3,17 +3,17 @@
     public class EntidadePopulacao
     {
         public string Nome { get; private set; }
-        public float Populacao { get; private set; }
+        public float Quantidade { get; private set; }
 
         public EntidadePopulacao(string nome, float populacao)
         {
             this.Nome = nome;
-            this.Populacao = populacao;
+            this.Quantidade = populacao;
         }
 
         public void AumentarPop(float quantidade)
         {
-            Populacao += quantidade;
+            this.Quantidade += quantidade;
         }
 
         /// <summary>
@@ -23,8 +23,8 @@
         /// <returns>true</returns>
         public bool RemoverPop(float quantidade)
         {
-            Populacao -= quantidade;
-            if (Populacao <= 0)
+            this.Quantidade -= quantidade;
+            if (this.Quantidade <= 0)
                 return true;
             return false;
         }
