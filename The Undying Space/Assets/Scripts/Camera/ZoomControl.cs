@@ -12,17 +12,6 @@ public class ZoomControl : MonoBehaviour
 
         if (Input.GetAxis(MOUSE) > 0 || Input.GetAxis(MOUSE) < 0)
             ZoomOrthoCamera(_camera.ScreenToWorldPoint(Input.mousePosition), Input.GetAxis(MOUSE));
-
-        //if (Input.GetAxis("Mouse ScrollWheel") > 0)
-        //{
-        //    ZoomOrthoCamera(_camera.ScreenToWorldPoint(Input.mousePosition), ZoomSize);
-        //}
-
-        //// Scoll back
-        //if (Input.GetAxis("Mouse ScrollWheel") < 0)
-        //{
-        //    ZoomOrthoCamera(_camera.ScreenToWorldPoint(Input.mousePosition), ZoomSize);
-        //}
     }
 
     // Ortographic camera zoom towards a point (in world coordinates). Negative amount zooms in, positive zooms out
