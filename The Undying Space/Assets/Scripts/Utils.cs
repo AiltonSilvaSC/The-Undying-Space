@@ -18,5 +18,7 @@ namespace Assets.Scripts
                     ?.Description
                 ?? value.ToString();
         }
+
+        public static string Text(this float numero) => string.Format("{0:N2}", numero);
     }
 }

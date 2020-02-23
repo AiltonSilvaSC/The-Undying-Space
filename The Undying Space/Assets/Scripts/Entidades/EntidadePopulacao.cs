@@ -16,6 +16,8 @@
             this.Quantidade += quantidade;
         }
 
+        public float TaxaCrescimento(int qualidadePlaneta) => (Quantidade / 80) * qualidadePlaneta;
+
         /// <summary>
         /// Retorna verdadeiro caso a população tenha zerado.
         /// </summary>
