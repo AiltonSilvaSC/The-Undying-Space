@@ -75,7 +75,7 @@ public class UIManager : MonoBehaviour
         _planetaSemDono.SetActive(true);
         _planetaSemDonoNome.text = nome;
         _planetaSemDonoQualidade.text = $"{(int)(qualidade * 100)}%";
-        _planetaSemDonoTamanho.text = tamanho.Text();
+        _planetaSemDonoTamanho.text = tamanho.Text() + " mil";
         _planetaSemDonoTipo.text = tipo.GetDescription();
     }
 }
