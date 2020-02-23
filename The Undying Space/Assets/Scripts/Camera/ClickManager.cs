@@ -72,7 +72,7 @@ public class ClickManager : MonoBehaviour
                                 if (hit.collider.TryGetComponent<Planet>(out var planet))
                                 {
                                     Debug.Log(planet.Nome);
-                                    UIManager.instance.AtualizarPlanetPanel();
+                                    UIManager.instance.AtualizarPlanetPanel(planet.Nome, planet.Qualidade, planet.Tamanho, planet.Tipo);
                                 }
                                 else
                                     Debug.LogError("Script Planet não encontrado neste objeto!");
@@ -99,6 +99,6 @@ public class ClickManager : MonoBehaviour
                 }
             }
         }
-
     }
+
 }

@@ -12,7 +12,6 @@ public class CameraDrag : MonoBehaviour
     {
         _camera = GetComponent<Camera>();
         ResetCamera = _camera.transform.position;
-        RandomizarNome.CarregarClasse();
     }
     void LateUpdate()
     {

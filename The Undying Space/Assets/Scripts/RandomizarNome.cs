@@ -10,8 +10,10 @@ namespace Assets.Scripts
 
         public static void CarregarClasse()
         {
-            rd = new Random();
-            Nomes = new List<string>() { "Mognaephus","Lephavis","Yudion","Thigilles","Zathea","Bonus","Phedalea","Caloturn","Trion OS",
+            if (rd == null)
+                rd = new Random();
+            if (Nomes == null)
+                Nomes = new List<string>() { "Mognaephus","Lephavis","Yudion","Thigilles","Zathea","Bonus","Phedalea","Caloturn","Trion OS",
                 "Derth IFU","Bogiuzuno","Kenuanov","Doccion","Melmoth","Zeter","Sahiri","Lozoyama","Chaater","Drypso JTVK","Phides WG5O",
                 "Zolaotis","Oviuvis","Uchurn","Enzion","Gihiri","Cheonerth","Strobetune","Nosunerth","Chao T1DV","Brarvis DX3","Kistrouphus",
                 "Vadrehines","Nalroria","Xosorix","Pater","Lluihines","Bekithea","Marvis 84F","Sao I0C6","Kodrautov","Monohiri","Valov",

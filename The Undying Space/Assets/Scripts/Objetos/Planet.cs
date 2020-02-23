@@ -29,7 +29,9 @@ public class Planet : MonoBehaviour
 
     private void RandomizarPlaneta()
     {
+        RandomizarNome.CarregarClasse();
         Nome = RandomizarNome.RandomNome();
+        Debug.Log("Randomizado!");
         Qualidade = Random.Range(0.00f, 0.98f);
         Tamanho = Random.Range(1000f, 160000f);
         var v = Enum.GetValues(typeof(EnumPlanetas));
