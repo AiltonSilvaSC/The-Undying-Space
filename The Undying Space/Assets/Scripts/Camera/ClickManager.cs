@@ -8,47 +8,40 @@ public class ClickManager : MonoBehaviour
 {
     private Camera _camera;
     private Objeto _objetoAnterior;
+    [HideInInspector]
+    public bool funcionar;
+
+    private void Awake() => funcionar = true;
 
     private void Start() => _camera = GetComponent<Camera>();
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && funcionar == true)
         {
             #region Mouse 
             Vector3 mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
             #endregion 
-            #region Verificacao nave
             // Verifica se clicou em uma nave.
             int mask = LayerMask.GetMask("Naves");
             var hit = Physics2D.Raycast(mousePos2D, Vector2.zero, 10, mask);
             if (hit.collider != null)
             {
-                if (_objetoAnterior != null)
-                    _objetoAnterior.DesativarSelection();
+                DesativarAnterior();
 
                 if (hit.collider.TryGetComponent<Objeto>(out var objeto))
                 {
-                    Debug.Log(objeto.TipoObjeto);
-                    #endregion 
-                    switch (objeto.TipoObjeto)
+                    if (hit.collider.TryGetComponent<SpaceShip>(out var spaceShip))
                     {
-                        case EnumObjetos.SpaceShip:
-                            if (hit.collider.TryGetComponent<SpaceShip>(out var spaceShip))
-                            {
-                                UIManager.instance.AtualizarSpaceShipPanel(spaceShip.TipoNave);
-                                _objetoAnterior = objeto;
-                                objeto.MostrarSelection();
-                            }
-                            else
-                                Debug.LogError("Script SpaceShip não encontrado neste objeto!");
-                            break;
+                        UIManager.instance.AtualizarSpaceShipPanel(spaceShip.TipoNave);
+                        _objetoAnterior = objeto;
+                        objeto.MostrarSelection();
                     }
+                    else
+                        Debug.LogError("Script SpaceShip não encontrado neste objeto!");
                     return;
                 }
-                else
-                    Debug.LogError("Script Objeto não encontrado neste objeto!");
             }
             else if (true)
             {
@@ -58,21 +51,28 @@ public class ClickManager : MonoBehaviour
                 hit = Physics2D.Raycast(mousePos2D, Vector2.zero, 10, mask);
                 if (hit.collider != null)
                 {
-                    if (_objetoAnterior != null)
-                        _objetoAnterior.DesativarSelection();
+                    DesativarAnterior();
 
                     if (hit.collider.TryGetComponent<Objeto>(out var objeto))
                     {
-
-                        Debug.Log(objeto.TipoObjeto);
                         #endregion
-                        switch (objeto.TipoObjeto)
+                        switch (objeto.tipoObjeto)
                         {
-                            case EnumObjetos.Planet:
-                                if (hit.collider.TryGetComponent<Planet>(out var planet))
+                            case EnumObjetos.Planeta:
+                                if (hit.collider.TryGetComponent<ObjetoPlaneta>(out var planet))
                                 {
-                                    Debug.Log(planet.Nome);
-                                    UIManager.instance.AtualizarPlanetPanel(planet.Nome, planet.Qualidade, planet.Tamanho, planet.Tipo);
+                                    _objetoAnterior = objeto;
+                                    objeto.MostrarSelection();
+
+                                    if (objeto.idJogadorAtual == 1)
+                                    {
+                                        UIManager.instance.AtivarButtonCriarNave();
+                                        UIManager.instance.AtualizarPlanetPanel(planet.nome, planet.qualidade, planet.tamanho, planet.tipo);
+                                    }
+                                    else
+                                    {
+                                        UIManager.instance.AtualizarPlanetPanel(planet.nome, planet.qualidade, planet.tamanho, planet.tipo);
+                                    }
                                 }
                                 else
                                     Debug.LogError("Script Planet não encontrado neste objeto!");
@@ -92,13 +92,18 @@ public class ClickManager : MonoBehaviour
                     EventSystem.current.RaycastAll(cursor, objectsHit);
                     if (objectsHit.Count == 0)
                     {
-                        UIManager.instance.DesativarSelectionPanel();
-                        if (_objetoAnterior != null)
-                            _objetoAnterior.DesativarSelection();
+                        DesativarAnterior();
                     }
                 }
             }
         }
     }
 
+    private void DesativarAnterior()
+    {
+        if (_objetoAnterior != null)
+            _objetoAnterior.DesativarSelection();
+        UIManager.instance.DesativarSelectionPanel();
+        UIManager.instance.DesativarButtonCriarNave();
+    }
 }

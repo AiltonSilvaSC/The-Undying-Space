@@ -8,6 +8,11 @@ public class CameraDrag : MonoBehaviour
     private Vector3 Diference;
     private bool Drag = false;
     private Camera _camera;
+    [HideInInspector]
+    public bool funcionar;
+
+    private void Awake() => funcionar = true;
+
     void Start()
     {
         _camera = GetComponent<Camera>();
@@ -15,7 +20,7 @@ public class CameraDrag : MonoBehaviour
     }
     void LateUpdate()
     {
-        if (Input.GetButton("Fire3"))
+        if (Input.GetButton("Fire3") && funcionar == true)
         {
             Diference = _camera.ScreenToWorldPoint(Input.mousePosition) - _camera.transform.position;
             if (Drag == false)

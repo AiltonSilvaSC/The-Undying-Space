@@ -5,12 +5,17 @@ public class ZoomControl : MonoBehaviour
     private const string MOUSE = "Mouse ScrollWheel";
     private float _zoomVel = 80f;
     private Camera _camera;
+    [HideInInspector]
+    public bool funcionar;
+
+    private void Awake() => funcionar = true;
+
     void Start() => _camera = GetComponent<Camera>();
 
     void Update()
     {
 
-        if (Input.GetAxis(MOUSE) > 0 || Input.GetAxis(MOUSE) < 0)
+        if ((Input.GetAxis(MOUSE) > 0 || Input.GetAxis(MOUSE) < 0) && funcionar == true)
             ZoomOrthoCamera(_camera.ScreenToWorldPoint(Input.mousePosition), Input.GetAxis(MOUSE));
     }
 

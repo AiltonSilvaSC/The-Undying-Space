@@ -7,34 +7,26 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    #region SelectionPanel
+    [SerializeField]
+    private GameControl _gameControl;
+    [SerializeField]
+    private UIPlanetaSemDono _planetaSemDono;
 
 
-    #region SpaceShip
     [SerializeField]
     private GameObject _spaceShipPanel = null;
     [SerializeField]
     private Text _spaceShipTipo = null;
-    #endregion
 
 
-    #region Planeta
-    [SerializeField]
-    private GameObject _planetaSemDono = null;
-    [SerializeField]
-    private Text _planetaSemDonoNome = null;
-    [SerializeField]
-    private Text _planetaSemDonoQualidade = null;
-    [SerializeField]
-    private Text _planetaSemDonoTamanho = null;
-    [SerializeField]
-    private Text _planetaSemDonoTipo = null;
-    [SerializeField]
-
-    #endregion
 
 
-    #endregion
+
+    [SerializeField]
+    private GameObject _panelCriarNave = null;
+    [SerializeField]
+    private GameObject _buttonCriarNave = null;
+
     private void Awake()
     {
         if (instance == null)
@@ -59,10 +51,10 @@ public class UIManager : MonoBehaviour
     public void DesativarSelectionPanel()
     {
         _spaceShipPanel.SetActive(false);
-        _planetaSemDono.SetActive(false);
+        _planetaSemDono.DesativarPanel();
     }
 
-    public void AtualizarSpaceShipPanel(EnumTipos tipo)
+    public void AtualizarSpaceShipPanel(EnumEspaconaves tipo)
     {
         DesativarSelectionPanel();
         _spaceShipPanel.SetActive(true);
@@ -72,10 +64,28 @@ public class UIManager : MonoBehaviour
     public void AtualizarPlanetPanel(string nome, float qualidade, float tamanho, EnumPlanetas tipo)
     {
         DesativarSelectionPanel();
-        _planetaSemDono.SetActive(true);
-        _planetaSemDonoNome.text = nome;
-        _planetaSemDonoQualidade.text = $"{(int)(qualidade * 100)}%";
-        _planetaSemDonoTamanho.text = tamanho.Text() + " mil";
-        _planetaSemDonoTipo.text = tipo.GetDescription();
+        _planetaSemDono.AtivarPanel(nome, qualidade, tamanho, tipo);
+    }
+
+    public void AtivarButtonCriarNave()
+    {
+        _buttonCriarNave.SetActive(true);
+    }
+
+    public void DesativarButtonCriarNave()
+    {
+        _buttonCriarNave.SetActive(false);
+    }
+
+    public void AtivarPanelCriarNave()
+    {
+        _panelCriarNave.SetActive(true);
+        _gameControl.PausarGame(true);
+    }
+
+    public void DesativarPanelCriarNave()
+    {
+        _panelCriarNave.SetActive(false);
+        _gameControl.PausarGame(false);
     }
 }

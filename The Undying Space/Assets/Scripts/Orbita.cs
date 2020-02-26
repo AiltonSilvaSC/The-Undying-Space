@@ -18,7 +18,6 @@ public class Orbita : MonoBehaviour
         _lineRenderer.widthMultiplier = 0.300f;
         _lineRenderer.material = Resources.Load("Materials/MaterialWhite", typeof(Material)) as Material;
         _lineRenderer.loop = true;
-
     }
 
     private void Update()

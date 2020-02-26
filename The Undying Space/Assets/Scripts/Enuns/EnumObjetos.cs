@@ -4,9 +4,9 @@ namespace Assets.Scripts.Enuns
 {
     public enum EnumObjetos
     {
-        [Description("Space Ship")]
-        SpaceShip,
-        [Description("Planet")]
-        Planet,
+        [Description("Espaçonave")]
+        Espaconave,
+        [Description("Planeta")]
+        Planeta,
     }
 }

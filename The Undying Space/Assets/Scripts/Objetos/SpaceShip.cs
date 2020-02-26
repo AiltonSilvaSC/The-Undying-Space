@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpaceShip : MonoBehaviour
 {
-    public EnumTipos TipoNave;
+    public EnumEspaconaves TipoNave;
     public string Nome;
 
 
