@@ -713,13 +713,14 @@ GameObject:
   - component: {fileID: 353972056}
   - component: {fileID: 353972058}
   - component: {fileID: 353972057}
+  - component: {fileID: 353972059}
   m_Layer: 5
   m_Name: PanelCriarNave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &353972056
 RectTransform:
   m_ObjectHideFlags: 0
@@ -778,6 +779,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353972055}
   m_CullTransparentMesh: 0
+--- !u!114 &353972059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353972055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0543e5ad6ab0a3543b0af97aaf7735fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &378652387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,13 +1201,14 @@ GameObject:
   - component: {fileID: 543601377}
   - component: {fileID: 543601379}
   - component: {fileID: 543601378}
+  - component: {fileID: 543601380}
   m_Layer: 5
   m_Name: PlanetaSemDono
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &543601377
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1254,6 +1268,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543601376}
   m_CullTransparentMesh: 0
+--- !u!114 &543601380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543601376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4a0c4741e99404f9e9b5108193d85d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _planetaSemDono: {fileID: 543601376}
+  _planetaSemDonoNome: {fileID: 1214698528}
+  _planetaSemDonoQualidade: {fileID: 1449730843}
+  _planetaSemDonoTamanho: {fileID: 1805694891}
+  _planetaSemDonoTipo: {fileID: 378652389}
 --- !u!1 &591178974
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,7 +1835,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 12345
+  m_Text: 0
   m_CaretBlinkRate: 0
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -3864,13 +3895,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameControl: {fileID: 182991301}
+  _planetaSemDono: {fileID: 543601380}
   _spaceShipPanel: {fileID: 2118987000}
   _spaceShipTipo: {fileID: 892809193}
-  _planetaSemDono: {fileID: 543601376}
-  _planetaSemDonoNome: {fileID: 1214698528}
-  _planetaSemDonoQualidade: {fileID: 1449730843}
-  _planetaSemDonoTamanho: {fileID: 1805694891}
-  _planetaSemDonoTipo: {fileID: 378652389}
   _panelCriarNave: {fileID: 353972055}
   _buttonCriarNave: {fileID: 591178974}
 --- !u!1 &1337661519
@@ -4337,6 +4364,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187676802339292963, guid: d0a36f5e71866b0458e31537b2362881,
+        type: 3}
+      propertyPath: m_MaxParticleSize
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0a36f5e71866b0458e31537b2362881, type: 3}
@@ -5119,7 +5151,7 @@ GameObject:
   - component: {fileID: 1964512127}
   - component: {fileID: 1964512126}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Variavel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5175,7 +5207,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 12345
+  m_Text: 0
 --- !u!222 &1964512127
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5376,6 +5408,7 @@ GameObject:
   - component: {fileID: 2118987001}
   - component: {fileID: 2118987003}
   - component: {fileID: 2118987002}
+  - component: {fileID: 2118987004}
   m_Layer: 5
   m_Name: SpaceShip
   m_TagString: Untagged
@@ -5440,6 +5473,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118987000}
   m_CullTransparentMesh: 0
+--- !u!114 &2118987004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118987000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b44b83ddbd0f64d87351c90495f84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2138107204 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4442070629811518277, guid: e9c228cc4d85ca2489ba181d79dd44d4,
@@ -5453,6 +5498,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 491702955}
     m_Modifications:
+    - target: {fileID: 1619760457, guid: 7d885cfe414e50e469a12e62392269bb, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619760459, guid: 7d885cfe414e50e469a12e62392269bb, type: 3}
+      propertyPath: m_DynamicPixelsPerUnit
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1619760460, guid: 7d885cfe414e50e469a12e62392269bb, type: 3}
       propertyPath: m_Camera
       value: 
