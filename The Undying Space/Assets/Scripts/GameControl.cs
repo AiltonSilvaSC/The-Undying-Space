@@ -14,7 +14,7 @@ public class GameControl : MonoBehaviour
 
     public Dictionary<int, EntidadeJogador> jogadores;
 
-    public static GameControl instance;
+    public static GameControl Instancia { get; private set;}
 
     [SerializeField]
     private CameraDrag _cameraDrag;
@@ -23,11 +23,14 @@ public class GameControl : MonoBehaviour
     [SerializeField]
     private ClickManager _clickManager;
 
+    [SerializeField]
+    public Texture2D mouseBandeiraBranca;
+
     private void Awake()
     {
         jogadores = new Dictionary<int, EntidadeJogador>();
-        if (instance == null)
-            instance = this;
+        if (Instancia == null)
+            Instancia = this;
         else
         {
             Destroy(gameObject);

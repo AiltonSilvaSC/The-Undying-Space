@@ -12,9 +12,18 @@ public class Objeto : MonoBehaviour
         get
         {
             string dono = null;
-            if (GameControl.instance.jogadores.TryGetValue(idJogadorAtual, out var imperio))
+            if (GameControl.Instancia.jogadores.TryGetValue(idJogadorAtual, out var imperio))
                 dono = imperio.imperioNome;
             return dono;
+        }
+    }
+    public bool DonoIsJogador
+    {
+        get
+        {
+            if (idJogadorAtual == 1)
+                return true;
+            return false;
         }
     }
 
@@ -59,7 +68,7 @@ public class Objeto : MonoBehaviour
             }
             else
                 _circuloDono.SetActive(true);
-            _circuloDono.GetComponent<Image>().color = GameControl.instance.jogadores[idJogadorAtual].imperioCor;
+            _circuloDono.GetComponent<Image>().color = GameControl.Instancia.jogadores[idJogadorAtual].imperioCor;
 
         }
         if (_circuloSelecao.activeSelf)

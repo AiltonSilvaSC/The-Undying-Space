@@ -8,7 +8,10 @@ public class ClickManager : MonoBehaviour
 {
     private Camera _camera;
 
+
     public Objeto objetoSelecionado;
+    public ObjetoSpaceShip objetoSelecionadoSpaceShip;
+    private LineRenderer _lineRenderer;
 
     public static ClickManager Instancia { get; private set; }
 
@@ -19,6 +22,14 @@ public class ClickManager : MonoBehaviour
         if (Instancia == null)
             Instancia = this;
         Funcionar = true;
+
+        _lineRenderer = gameObject.AddComponent<LineRenderer>();
+        _lineRenderer.sortingLayerName = "Fundo";
+        _lineRenderer.sortingOrder = 3;
+        _lineRenderer.startColor = Color.yellow;
+        _lineRenderer.widthMultiplier = 0.300f;
+        _lineRenderer.material = Resources.Load("Materials/MaterialWhite", typeof(Material)) as Material;
+        _lineRenderer.loop = false;
     }
     private void Start() => _camera = GetComponent<Camera>();
 
@@ -43,6 +54,7 @@ public class ClickManager : MonoBehaviour
                     {
                         objetoSelecionado = objeto;
                         objeto.MostrarSelection();
+                        objetoSelecionadoSpaceShip = spaceShip;
                         UIManager.Instancia.AtualizarSpaceShipPanel(spaceShip.Nome, spaceShip.TipoNave, objeto.Dono);
                     }
                     else
@@ -97,13 +109,76 @@ public class ClickManager : MonoBehaviour
                 }
             }
         }
+
+        //Botão direito em algo
+        if (Input.GetMouseButtonDown(1) && Funcionar == true)
+        {
+            if (objetoSelecionadoSpaceShip != null)
+            {
+                if (objetoSelecionado.DonoIsJogador)
+                {
+                    Objeto alvo = null;
+
+                    Vector3 mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
+                    Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+                    int mask = LayerMask.GetMask("Naves");
+                    var hit = Physics2D.Raycast(mousePos2D, Vector2.zero, 10, mask);
+                    if (hit.collider != null)
+                    {
+                        hit.collider.TryGetComponent(out alvo);
+                    }
+                    else if (true)
+                    {
+                        // Verifica se clicou em alguma construção, e depois um planeta.
+                        mask = LayerMask.GetMask("PlanetaConstrucao");
+                        hit = Physics2D.Raycast(mousePos2D, Vector2.zero, 10, mask);
+                        if (hit.collider != null)
+                        {
+                            hit.collider.TryGetComponent(out alvo);
+                        }
+                        else
+                        {
+                            // Verifica se clicou na UI. Caso não tenha move a espaconave para a posição desejada.
+                            PointerEventData cursor = new PointerEventData(EventSystem.current);
+                            cursor.position = Input.mousePosition;
+                            List<RaycastResult> objectsHit = new List<RaycastResult>();
+                            EventSystem.current.RaycastAll(cursor, objectsHit);
+                            if (objectsHit.Count == 0)
+                            {
+                                objetoSelecionadoSpaceShip.alvo = mousePos2D;
+                                objetoSelecionadoSpaceShip.mover = true;
+                            }
+                        }
+                    }
+
+
+                }
+            }
+        }
     }
 
     private void DesativarAnterior()
     {
         if (objetoSelecionado != null)
             objetoSelecionado.DesativarSelection();
+        if (objetoSelecionadoSpaceShip != null)
+            objetoSelecionadoSpaceShip = null;
+        if (_lineRenderer != null)
+            _lineRenderer.positionCount = 0;
         UIManager.Instancia.DesativarSelectionPanel();
         UIManager.Instancia.RemoverButtonCriarNave();
+    }
+
+    private void FixedUpdate()
+    {
+        if (_lineRenderer != null && objetoSelecionadoSpaceShip != null)
+        {
+            if (objetoSelecionadoSpaceShip.mover)
+            {
+                _lineRenderer.positionCount = 2;
+                _lineRenderer.SetPosition(0, objetoSelecionadoSpaceShip.transform.position);
+                _lineRenderer.SetPosition(1, objetoSelecionadoSpaceShip.alvo);
+            }
+        }
     }
 }

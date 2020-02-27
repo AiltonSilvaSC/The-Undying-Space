@@ -73,12 +73,12 @@ public class UIManager : MonoBehaviour
     public void MostrarPanelCriarNave()
     {
         _panelCriarNave.SetActive(true);
-        GameControl.instance.PausarGame(true);
+        GameControl.Instancia.PausarGame(true);
     }
 
     public void FecharPanelCriarNave()
     {
         _panelCriarNave.SetActive(false);
-        GameControl.instance.PausarGame(false);
+        GameControl.Instancia.PausarGame(false);
     }
 }

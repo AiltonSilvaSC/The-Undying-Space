@@ -8,12 +8,26 @@ public class ObjetoSpaceShip : MonoBehaviour
     public string Nome;
 
 
-    public Transform Alvo;
-    private Seeker _seeker;
+    public Vector3 alvo;
+    public bool mover;
+    private IAstarAI ai;
 
 
     private void Start()
     {
-        _seeker = GetComponent<Seeker>();
+        ai = GetComponent<IAstarAI>();
+        if (ai != null) ai.onSearchPath += Update;
+        mover = false;
     }
-   }
+
+    void OnDisable()
+    {
+        if (ai != null) ai.onSearchPath -= Update;
+    }
+
+    private void Update()
+    {
+        if (alvo != null && mover)
+            ai.destination = alvo;
+    }
+}

@@ -61,4 +61,30 @@ public class ObjetoPlaneta : MonoBehaviour
             }
         }
     }
+
+    private void Update()
+    {
+        if (ClickManager.Instancia.objetoSelecionadoSpaceShip == null)
+        {
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        }
+    }
+
+    private void OnMouseOver()
+    {
+        if (ClickManager.Instancia.objetoSelecionadoSpaceShip != null)
+        {
+            Debug.Log("Spaceship não é null");
+            if (ClickManager.Instancia.objetoSelecionado.DonoIsJogador)
+            {
+                Debug.Log("Spaceship é do  jogador");
+                Cursor.SetCursor(GameControl.Instancia.mouseBandeiraBranca, Vector2.zero, CursorMode.Auto);
+            }
+        }
+    }
+
+    void OnMouseExit()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+    }
 }
