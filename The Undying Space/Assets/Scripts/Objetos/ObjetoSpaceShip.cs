@@ -2,7 +2,7 @@
 using Pathfinding;
 using UnityEngine;
 
-public class SpaceShip : MonoBehaviour
+public class ObjetoSpaceShip : MonoBehaviour
 {
     public EnumEspaconaves TipoNave;
     public string Nome;

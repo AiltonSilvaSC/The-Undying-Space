@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance;
+    public static UIManager Instancia { get; private set; }
 
     #region UI
 
@@ -29,8 +29,8 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-            instance = this;
+        if (Instancia == null)
+            Instancia = this;
         else
         {
             Destroy(gameObject);

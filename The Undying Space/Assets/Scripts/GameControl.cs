@@ -55,7 +55,7 @@ public class GameControl : MonoBehaviour
             pausar = true;
         _cameraDrag.funcionar = pausar;
         _zoomControl.funcionar = pausar;
-        _clickManager.funcionar = pausar;
+        _clickManager.Funcionar = pausar;
         switch (pausar)
         {
             case false:

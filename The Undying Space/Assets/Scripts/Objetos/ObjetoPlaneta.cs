@@ -2,6 +2,7 @@
 using Assets.Scripts.Entidades;
 using Assets.Scripts.Enuns;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -27,6 +28,10 @@ public class ObjetoPlaneta : MonoBehaviour
     public List<EntidadePopulacao> populacoes;
     //public List<EntidadeTropa> Tropas { get; private set; }
 
+    public List<string> producaoNaves;
+
+    public GameObject nave;
+
     public void RandomizarPlaneta()
     {
         RandomizarNome.CarregarClasse();
@@ -36,5 +41,24 @@ public class ObjetoPlaneta : MonoBehaviour
         tamanho = Random.Range(1000f, 160000f);
         var v = Enum.GetValues(typeof(EnumPlanetas));
         tipo = (EnumPlanetas)v.GetValue(Random.Range(0, v.Length));
+    }
+
+    private void Start()
+    {
+        StartCoroutine(CriarNave());
+    }
+
+    IEnumerator CriarNave()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2f);
+            if (producaoNaves.Count != 0)
+            {
+                yield return new WaitForSeconds(8f);
+                producaoNaves.RemoveAt(0);
+                Instantiate(nave, transform.position, Quaternion.identity);
+            }
+        }
     }
 }

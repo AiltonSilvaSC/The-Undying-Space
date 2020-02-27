@@ -2,22 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
+// Adicionar na camera.
 public class ClickManager : MonoBehaviour
 {
     private Camera _camera;
-    private Objeto _objetoAnterior;
-    [HideInInspector]
-    public bool funcionar;
 
-    private void Awake() => funcionar = true;
+    public Objeto objetoSelecionado;
 
+    public static ClickManager Instancia { get; private set; }
+
+    public bool Funcionar { get; set; }
+
+    private void Awake()
+    {
+        if (Instancia == null)
+            Instancia = this;
+        Funcionar = true;
+    }
     private void Start() => _camera = GetComponent<Camera>();
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && funcionar == true)
+        if (Input.GetMouseButtonDown(0) && Funcionar == true)
         {
             #region Mouse 
             Vector3 mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
@@ -32,11 +39,11 @@ public class ClickManager : MonoBehaviour
 
                 if (hit.collider.TryGetComponent<Objeto>(out var objeto))
                 {
-                    if (hit.collider.TryGetComponent<SpaceShip>(out var spaceShip))
+                    if (hit.collider.TryGetComponent<ObjetoSpaceShip>(out var spaceShip))
                     {
-                        _objetoAnterior = objeto;
+                        objetoSelecionado = objeto;
                         objeto.MostrarSelection();
-                        UIManager.instance.AtualizarSpaceShipPanel(spaceShip.Nome, spaceShip.TipoNave, objeto.Dono);
+                        UIManager.Instancia.AtualizarSpaceShipPanel(spaceShip.Nome, spaceShip.TipoNave, objeto.Dono);
                     }
                     else
                         Debug.LogError("Script SpaceShip não encontrado neste objeto!");
@@ -61,11 +68,11 @@ public class ClickManager : MonoBehaviour
                             case EnumObjetos.Planeta:
                                 if (hit.collider.TryGetComponent<ObjetoPlaneta>(out var planet))
                                 {
-                                    _objetoAnterior = objeto;
+                                    objetoSelecionado = objeto;
                                     objeto.MostrarSelection();
                                     if (objeto.idJogadorAtual == 1)
-                                        UIManager.instance.MostraButtonCriarNave();
-                                    UIManager.instance.AtualizarPlanetPanel(planet.nome, planet.qualidade, planet.tamanho, planet.tipo, objeto.Dono);
+                                        UIManager.Instancia.MostraButtonCriarNave();
+                                    UIManager.Instancia.AtualizarPlanetPanel(planet.nome, planet.qualidade, planet.tamanho, planet.tipo, objeto.Dono);
                                 }
                                 else
                                     Debug.LogError("Script Planet não encontrado neste objeto!");
@@ -94,9 +101,9 @@ public class ClickManager : MonoBehaviour
 
     private void DesativarAnterior()
     {
-        if (_objetoAnterior != null)
-            _objetoAnterior.DesativarSelection();
-        UIManager.instance.DesativarSelectionPanel();
-        UIManager.instance.RemoverButtonCriarNave();
+        if (objetoSelecionado != null)
+            objetoSelecionado.DesativarSelection();
+        UIManager.Instancia.DesativarSelectionPanel();
+        UIManager.Instancia.RemoverButtonCriarNave();
     }
 }
