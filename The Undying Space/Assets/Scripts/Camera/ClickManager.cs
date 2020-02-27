@@ -34,9 +34,9 @@ public class ClickManager : MonoBehaviour
                 {
                     if (hit.collider.TryGetComponent<SpaceShip>(out var spaceShip))
                     {
-                        UIManager.instance.AtualizarSpaceShipPanel(spaceShip.TipoNave);
                         _objetoAnterior = objeto;
                         objeto.MostrarSelection();
+                        UIManager.instance.AtualizarSpaceShipPanel(spaceShip.Nome, spaceShip.TipoNave, objeto.Dono);
                     }
                     else
                         Debug.LogError("Script SpaceShip não encontrado neste objeto!");
@@ -63,16 +63,9 @@ public class ClickManager : MonoBehaviour
                                 {
                                     _objetoAnterior = objeto;
                                     objeto.MostrarSelection();
-
                                     if (objeto.idJogadorAtual == 1)
-                                    {
-                                        UIManager.instance.AtivarButtonCriarNave();
-                                        UIManager.instance.AtualizarPlanetPanel(planet.nome, planet.qualidade, planet.tamanho, planet.tipo);
-                                    }
-                                    else
-                                    {
-                                        UIManager.instance.AtualizarPlanetPanel(planet.nome, planet.qualidade, planet.tamanho, planet.tipo);
-                                    }
+                                        UIManager.instance.MostraButtonCriarNave();
+                                    UIManager.instance.AtualizarPlanetPanel(planet.nome, planet.qualidade, planet.tamanho, planet.tipo, objeto.Dono);
                                 }
                                 else
                                     Debug.LogError("Script Planet não encontrado neste objeto!");
@@ -104,6 +97,6 @@ public class ClickManager : MonoBehaviour
         if (_objetoAnterior != null)
             _objetoAnterior.DesativarSelection();
         UIManager.instance.DesativarSelectionPanel();
-        UIManager.instance.DesativarButtonCriarNave();
+        UIManager.instance.RemoverButtonCriarNave();
     }
 }

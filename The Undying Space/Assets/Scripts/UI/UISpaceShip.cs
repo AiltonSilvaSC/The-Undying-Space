@@ -1,18 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Assets.Scripts;
+using Assets.Scripts.Enuns;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UISpaceShip : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private GameObject _uiSpaceShip = null;
+    [SerializeField]
+    private Text _uiSpaceShipNome = null;
+    [SerializeField]
+    private Text _uiSpaceShipTipo = null;
+    [SerializeField]
+    private Text _uiSpaceShipDono = null;
+
+    public void AtivarPanel(string nome, EnumEspaconaves tipo, string dono)
     {
-        
+        _uiSpaceShip.SetActive(true);
+        _uiSpaceShipNome.text = nome;
+        _uiSpaceShipTipo.text = tipo.GetDescription();
+        _uiSpaceShipDono.text = dono;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DesativarPanel()
     {
-        
+        _uiSpaceShip.SetActive(false);
     }
 }

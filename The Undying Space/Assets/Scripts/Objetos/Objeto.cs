@@ -7,6 +7,16 @@ public class Objeto : MonoBehaviour
     public EnumObjetos tipoObjeto;
     public int idJogadorAtual;
     private int idJogadorAnterior;
+    public string Dono
+    {
+        get
+        {
+            string dono = null;
+            if (GameControl.instance.jogadores.TryGetValue(idJogadorAtual, out var imperio))
+                dono = imperio.imperioNome;
+            return dono;
+        }
+    }
 
     private GameObject _circuloDono;
     private GameObject _circuloSelecao;

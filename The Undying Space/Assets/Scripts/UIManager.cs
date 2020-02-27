@@ -7,16 +7,16 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    [SerializeField]
-    private GameControl _gameControl;
-    [SerializeField]
-    private UIPlanetaSemDono _planetaSemDono;
+    #region UI
 
 
     [SerializeField]
-    private GameObject _spaceShipPanel = null;
+    private UIPlaneta _uiPlaneta;
     [SerializeField]
-    private Text _spaceShipTipo = null;
+    private UISpaceShip _uiSpaceShip;
+
+    #endregion
+
 
 
 
@@ -36,10 +36,7 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         DontDestroyOnLoad(gameObject);
-
-
     }
 
     void Start()
@@ -50,42 +47,38 @@ public class UIManager : MonoBehaviour
 
     public void DesativarSelectionPanel()
     {
-        _spaceShipPanel.SetActive(false);
-        _planetaSemDono.DesativarPanel();
+        _uiSpaceShip.DesativarPanel();
+        _uiPlaneta.DesativarPanel();
     }
 
-    public void AtualizarSpaceShipPanel(EnumEspaconaves tipo)
+    public void AtualizarPlanetPanel(string nome, float qualidade, float tamanho, EnumPlanetas tipo, string dono = null)
     {
         DesativarSelectionPanel();
-        _spaceShipPanel.SetActive(true);
-        _spaceShipTipo.text = tipo.GetDescription();
+        if (dono == null)
+            dono = "Nenhum dono";
+        _uiPlaneta.AtivarPanel(nome, qualidade, tamanho, tipo, dono);
     }
 
-    public void AtualizarPlanetPanel(string nome, float qualidade, float tamanho, EnumPlanetas tipo)
+    public void AtualizarSpaceShipPanel(string nome, EnumEspaconaves tipo, string dono = null)
     {
         DesativarSelectionPanel();
-        _planetaSemDono.AtivarPanel(nome, qualidade, tamanho, tipo);
+        if (dono == null)
+            dono = "Nenhum dono";
+        _uiSpaceShip.AtivarPanel(nome, tipo, dono);
     }
 
-    public void AtivarButtonCriarNave()
-    {
-        _buttonCriarNave.SetActive(true);
-    }
+    public void MostraButtonCriarNave() => _buttonCriarNave.SetActive(true);
+    public void RemoverButtonCriarNave() => _buttonCriarNave.SetActive(false);
 
-    public void DesativarButtonCriarNave()
-    {
-        _buttonCriarNave.SetActive(false);
-    }
-
-    public void AtivarPanelCriarNave()
+    public void MostrarPanelCriarNave()
     {
         _panelCriarNave.SetActive(true);
-        _gameControl.PausarGame(true);
+        GameControl.instance.PausarGame(true);
     }
 
-    public void DesativarPanelCriarNave()
+    public void FecharPanelCriarNave()
     {
         _panelCriarNave.SetActive(false);
-        _gameControl.PausarGame(false);
+        GameControl.instance.PausarGame(false);
     }
 }
