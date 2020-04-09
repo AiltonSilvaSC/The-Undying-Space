@@ -19,3 +19,6 @@ uma nave de carga vá e colete o recurso.
 
 Você também precisa se defender contra inimigos, que podem atacar após um tempo de jogo. O objetivo deles é atacar tudo que estiver mais próximo então deixe algumas 
 naves como escoltas de outras
+
+
+https://trello.com/b/TIIiRvjv/the-undying-space
